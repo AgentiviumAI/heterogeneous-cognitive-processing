@@ -1,0 +1,36 @@
+experiment_id: hcp-affinity-v1
+seed: 20261014
+passes: 3
+concurrency: 1
+qwen_url: http://127.0.0.1:8000
+qwen_model: qwen3-8b
+d1_url: http://127.0.0.1:8081
+qwen_revision: 4da05a8edb55c6046cce958586c33b61da07bb79
+qwen_quantization: AWQ
+qwen_backend: vLLM 0.8.5
+d1_revision: bb1e436ea78eb96a3f1acb6da865f70c2fbeb563
+d1_quantization: Q8_0
+d1_backend: llama.cpp 318a471a6295e53bfce7ca96ae0cf26071cbdd6e CUDA
+bfcl_revision: 61fc0608cfd831fcfbbaa676ebdfef0ed963eeda
+bfcl_quotas:
+  simple: 30
+  live_simple: 30
+  exec_simple: 20
+  multiple: 40
+  live_multiple: 40
+  irrelevance: 20
+  live_irrelevance: 20
+bfcl_total: 200
+scifact_queries: 100
+scifact_candidates: 10
+document_title_chars: 240
+document_text_chars: 1600
+state_max_chars: 4500
+token_reserve: 256
+d1_token_limit: 2048
+qwen_token_limit: 4096
+warmup_examples_per_dataset: 10
+bootstrap_samples: 10000
+raw_root: datasets/raw
+manifest_root: datasets/manifests/affinity-v1
+results: results/affinity-v1

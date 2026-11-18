@@ -1,0 +1,117 @@
+# Provider/model catalog for homogeneous PaperQA baselines.
+# Secrets are never stored here; only environment-variable names are stored.
+
+[providers.opencode]
+adapter = "openai_compatible"
+litellm_prefix = "openai"
+api_base = "https://opencode.ai/zen/v1"
+api_key_env = "OPENCODE_API_KEY"
+
+[providers.opencode.router_kwargs]
+num_retries = 3
+
+[providers.groq]
+adapter = "litellm"
+litellm_prefix = "groq"
+# Backward-compatible primary key plus an optional comma-separated pool.
+api_key_env = "GROQ_API_KEY"
+api_keys_env = "GROQ_API_KEYS"
+
+# "shared" is safe when keys belong to the same Groq organization.
+# Set GROQ_QUOTA_SCOPE=per_key only when the keys are known to have independent
+# quotas (the observed smoke-run keys returned distinct Groq organization IDs).
+quota_scope = "${GROQ_QUOTA_SCOPE:-shared}"
+shared_tpm = "${GROQ_TPM:-8000}"
+shared_rpm = "${GROQ_RPM:-30}"
+per_key_tpm = "${GROQ_TPM_PER_KEY:-8000}"
+per_key_rpm = "${GROQ_RPM_PER_KEY:-30}"
+rate_limit_headroom = "${GROQ_RATE_LIMIT_HEADROOM:-0.80}"
+
+# After LiteLLM rotates/retries all currently available deployments, wait for
+# the provider's Retry-After and re-enter the Router instead of failing the run.
+adaptive_rate_limit_recovery = true
+rate_limit_recovery_attempts = "${GROQ_RATE_LIMIT_RECOVERY_ATTEMPTS:-12}"
+rate_limit_default_wait_seconds = "${GROQ_RATE_LIMIT_DEFAULT_WAIT_SECONDS:-5}"
+rate_limit_max_wait_seconds = "${GROQ_RATE_LIMIT_MAX_WAIT_SECONDS:-60}"
+
+[providers.groq.router_kwargs]
+num_retries = 3
+routing_strategy = "simple-shuffle"
+enable_pre_call_checks = true
+# The strict wait layer is fhlmi's GLOBAL_LIMITER. Router cooldowns remain as
+# a second line of defense for key-local 429s.
+retry_after = 5
+allowed_fails = 1
+cooldown_time = 8
+
+[providers.openai]
+adapter = "litellm"
+# Keep native OpenAI IDs such as gpt-* unchanged so PaperQA sees the original
+# model name and can retain any model-name-specific behavior.
+api_key_env = "OPENAI_API_KEY"
+
+[providers.openai.router_kwargs]
+num_retries = 3
+
+[providers.anthropic]
+adapter = "litellm"
+litellm_prefix = "anthropic"
+api_key_env = "ANTHROPIC_API_KEY"
+
+[providers.anthropic.router_kwargs]
+num_retries = 3
+
+[providers.vllm]
+adapter = "openai_compatible"
+litellm_prefix = "openai"
+api_base = "${VLLM_API_BASE:-http://127.0.0.1:8000/v1}"
+api_key_env = "VLLM_API_KEY"
+api_key_optional = true
+
+[providers.vllm.router_kwargs]
+num_retries = 1
+
+# Targets are optional conveniences. You can also pass --provider + --model inline.
+[targets.opencode-default]
+provider = "opencode"
+model = "${OPENCODE_MODEL:-CHANGE_ME}"
+temperature = 0.0
+
+[targets.groq-default]
+provider = "groq"
+model = "${GROQ_MODEL:-CHANGE_ME}"
+temperature = 0.0
+
+[targets.openai-default]
+provider = "openai"
+model = "${OPENAI_MODEL:-CHANGE_ME}"
+temperature = 0.0
+
+[targets.anthropic-default]
+provider = "anthropic"
+model = "${ANTHROPIC_MODEL:-CHANGE_ME}"
+temperature = 0.0
+
+[targets.vllm-default]
+provider = "vllm"
+model = "${VLLM_MODEL:-CHANGE_ME}"
+temperature = 0.0
+
+[providers.openrouter]
+adapter = "litellm"
+litellm_prefix = "openrouter"
+api_key_env = "OPENROUTER_API_KEY"
+
+[providers.openrouter.router_kwargs]
+num_retries = 8
+
+[targets.openrouter-nemotron-free]
+provider = "openrouter"
+model = "${OPENROUTER_MODEL:-nvidia/nemotron-3.5-lightning:free}"
+temperature = 0.0
+
+[targets.openrouter-nemotron-free.params]
+max_tokens = 1024
+
+[targets.openrouter-nemotron-free.params.reasoning]
+enabled = false

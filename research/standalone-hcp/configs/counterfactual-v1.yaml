@@ -1,0 +1,5 @@
+experiment_id: hcp-e4-mbpp-counterfactual-v1
+source_results: results/mbpp-extended-v1
+results: results/counterfactual-v1
+bootstrap_samples: 10000
+seed: 20261015

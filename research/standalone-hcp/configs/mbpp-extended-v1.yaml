@@ -1,0 +1,29 @@
+experiment_id: hcp-e3-mbpp-extended-v1
+qwen_url: http://127.0.0.1:18000
+qwen_model: qwen3-8b
+d1_url: http://127.0.0.1:18081
+tasks: all
+dataset_revision: 4bb6404fdc6cacfda99d4ac4205087b89d32030c
+max_attempts: 3
+max_output_tokens: 1024
+timeout_seconds: 5
+memory_mb: 512
+variants: [A, B, C, D]
+results: results/mbpp-extended-v1
+initial_generation_source: results/mbpp-pilot-v2
+qwen_revision: 4da05a8edb55c6046cce958586c33b61da07bb79
+d1_revision: bb1e436ea78eb96a3f1acb6da865f70c2fbeb563
+d1_quantization: Q8_0
+llama_commit: 318a471a6295e53bfce7ca96ae0cf26071cbdd6e
+qwen_backend: vLLM 0.8.5
+d1_backend: llama.cpp CUDA 318a471a6295e53bfce7ca96ae0cf26071cbdd6e
+evaluator: docker-python-isolated
+evaluator_backend: docker
+evaluator_image: hcp-mbpp-evaluator:py313-numpy226
+seed: 20261015
+concurrency: 1
+bootstrap_samples: 10000
+local_qwen_port: 18000
+local_d1_port: 18081
+remote_qwen_port: 8000
+remote_d1_port: 8081

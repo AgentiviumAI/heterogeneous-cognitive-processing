@@ -1,0 +1,8 @@
+[project]
+name = "hcp-experiment"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["httpx", "pydantic>=2", "datasets", "pytest", "orjson", "nvidia-ml-py", "pyyaml", "numpy", "matplotlib"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

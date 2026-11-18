@@ -1,0 +1,16 @@
+qwen_url: http://127.0.0.1:8000
+qwen_model: qwen3-8b
+d1_url: http://127.0.0.1:8081
+tasks: 25
+max_attempts: 3
+max_output_tokens: 1024
+timeout_seconds: 5
+memory_mb: 512
+variants: [A, B, C, D]
+results: results/mbpp-pilot-v2
+initial_generation_source: results/mbpp-pilot
+qwen_revision: 4da05a8edb55c6046cce958586c33b61da07bb79
+d1_revision: bb1e436ea78eb96a3f1acb6da865f70c2fbeb563
+d1_quantization: Q8_0
+llama_commit: 318a471a6295e53bfce7ca96ae0cf26071cbdd6e
+evaluator: direct-python

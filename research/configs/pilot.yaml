@@ -1,0 +1,36 @@
+experiment:
+  name: hcp-paperqa-pilot
+  description: Shared pilot configuration for heterogeneous cognitive processing experiments
+
+dataset:
+  benchmark: LitQA2
+  subset_size: 5
+  subset_seed: 20261003
+  split: eval
+  selection: europe_pmc_open_fulltext
+
+models:
+  llm_baseline:
+    provider: groq
+    model: groq/openai/gpt-oss-120b
+    reasoning: low
+  decision_primary:
+    provider: jev
+    model: jev-1.13.0
+  decision_optional:
+    provider: cloudflare
+    model: clef
+
+execution:
+  modes:
+    - homogeneous_llm
+    - heterogeneous_static
+
+logging:
+  format: jsonl
+  schema: research/docs/metrics.md
+
+notes:
+  - GPT-OSS 120B is served by Groq; LiteLLM uses the groq/ prefix for PaperQA.
+  - Set GROQ_API_KEY and TYPESAFE_API_KEY in the environment before live runs.
+  - Never store API keys in this file.

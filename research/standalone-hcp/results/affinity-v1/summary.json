@@ -1,0 +1,351 @@
+{
+  "bfcl": {
+    "quality": {
+      "qwen": 0.905,
+      "d1": 0.92,
+      "difference_d1_minus_qwen": 0.015,
+      "qwen_ci95": [
+        0.86,
+        0.945
+      ],
+      "d1_ci95": [
+        0.88,
+        0.955
+      ],
+      "difference_ci95": [
+        -0.025000000000000022,
+        0.05999999999999994
+      ],
+      "paired_units": 200,
+      "per_pass_accuracy": {
+        "qwen3-8b": [
+          0.905,
+          0.905,
+          0.905
+        ],
+        "d1-3b": [
+          0.92,
+          0.92,
+          0.92
+        ]
+      },
+      "strata": {
+        "simple": {
+          "qwen": 1.0,
+          "d1": 1.0,
+          "difference_d1_minus_qwen": 0.0,
+          "qwen_ci95": [
+            1.0,
+            1.0
+          ],
+          "d1_ci95": [
+            1.0,
+            1.0
+          ],
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "paired_units": 30
+        },
+        "live_simple": {
+          "qwen": 1.0,
+          "d1": 0.8666666666666667,
+          "difference_d1_minus_qwen": -0.13333333333333333,
+          "qwen_ci95": [
+            1.0,
+            1.0
+          ],
+          "d1_ci95": [
+            0.7333333333333333,
+            0.9666666666666667
+          ],
+          "difference_ci95": [
+            -0.2666666666666667,
+            -0.033333333333333326
+          ],
+          "paired_units": 30
+        },
+        "exec_simple": {
+          "qwen": 1.0,
+          "d1": 1.0,
+          "difference_d1_minus_qwen": 0.0,
+          "qwen_ci95": [
+            1.0,
+            1.0
+          ],
+          "d1_ci95": [
+            1.0,
+            1.0
+          ],
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "paired_units": 20
+        },
+        "multiple": {
+          "qwen": 1.0,
+          "d1": 1.0,
+          "difference_d1_minus_qwen": 0.0,
+          "qwen_ci95": [
+            1.0,
+            1.0
+          ],
+          "d1_ci95": [
+            1.0,
+            1.0
+          ],
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "paired_units": 40
+        },
+        "live_multiple": {
+          "qwen": 1.0,
+          "d1": 0.95,
+          "difference_d1_minus_qwen": -0.05,
+          "qwen_ci95": [
+            1.0,
+            1.0
+          ],
+          "d1_ci95": [
+            0.875,
+            1.0
+          ],
+          "difference_ci95": [
+            -0.125,
+            0.0
+          ],
+          "paired_units": 40
+        },
+        "irrelevance": {
+          "qwen": 0.6,
+          "d1": 0.75,
+          "difference_d1_minus_qwen": 0.15,
+          "qwen_ci95": [
+            0.4,
+            0.8
+          ],
+          "d1_ci95": [
+            0.55,
+            0.95
+          ],
+          "difference_ci95": [
+            -0.050000000000000044,
+            0.35000000000000003
+          ],
+          "paired_units": 20
+        },
+        "live_irrelevance": {
+          "qwen": 0.45,
+          "d1": 0.75,
+          "difference_d1_minus_qwen": 0.3,
+          "qwen_ci95": [
+            0.25,
+            0.65
+          ],
+          "d1_ci95": [
+            0.55,
+            0.9
+          ],
+          "difference_ci95": [
+            0.050000000000000044,
+            0.55
+          ],
+          "paired_units": 20
+        }
+      },
+      "no_tool": {
+        "qwen": 0.525,
+        "d1": 0.75,
+        "difference_d1_minus_qwen": 0.225,
+        "qwen_ci95": [
+          0.375,
+          0.675
+        ],
+        "d1_ci95": [
+          0.625,
+          0.875
+        ],
+        "difference_ci95": [
+          0.07499999999999996,
+          0.37500000000000006
+        ],
+        "paired_units": 40
+      },
+      "always_first_tool_accuracy": 0.58,
+      "always_no_tool_accuracy": 0.2
+    },
+    "latency": {
+      "qwen3-8b": {
+        "median_ms": 175.79972138628364,
+        "p95_ms": 240.87504614144564,
+        "requests": 600,
+        "invalid_requests": 0,
+        "invalid_rate": 0.0,
+        "errors": {},
+        "mean_input_tokens": 414.14,
+        "mean_output_tokens": 10.485,
+        "mean_input_preparation_ms": 0.07297567091882229,
+        "median_harness_cpu_seconds": 0.00265349999999942,
+        "median_container_cpu_usage_usec_delta": 188342.0
+      },
+      "d1-3b": {
+        "median_ms": 51.7337778583169,
+        "p95_ms": 113.13740713521838,
+        "requests": 600,
+        "invalid_requests": 0,
+        "invalid_rate": 0.0,
+        "errors": {},
+        "mean_input_tokens": 381.395,
+        "mean_output_tokens": 0.0,
+        "mean_input_preparation_ms": 0.0714761686200897,
+        "median_harness_cpu_seconds": 0.002232500000000019,
+        "median_container_cpu_usage_usec_delta": 52943.5
+      },
+      "speedup_qwen_over_d1": 3.398161291598415,
+      "cluster_median_speedup": 3.4249051893266143,
+      "cluster_median_speedup_ci95": [
+        3.248269610805196,
+        3.725253767830462
+      ],
+      "median_paired_latency_difference_ms": -133.32554092630744,
+      "latency_bootstrap_units": "BFCL example clusters"
+    }
+  },
+  "scifact": {
+    "quality": {
+      "ndcg10": {
+        "qwen": 0.6591456629410777,
+        "d1": 0.6654310404163007,
+        "difference_d1_minus_qwen": 0.006285377475222996,
+        "qwen_ci95": [
+          0.5766037559950123,
+          0.7391367464447951
+        ],
+        "d1_ci95": [
+          0.5843546920163746,
+          0.7468092145268687
+        ],
+        "difference_ci95": [
+          -0.026200876258029936,
+          0.039503657547606305
+        ],
+        "paired_units": 100
+      },
+      "mrr10": {
+        "qwen": 0.6425238095238095,
+        "d1": 0.6488452380952381,
+        "difference_d1_minus_qwen": 0.006321428571428572,
+        "qwen_ci95": [
+          0.5555238095238095,
+          0.7261848214285713
+        ],
+        "d1_ci95": [
+          0.5630821428571429,
+          0.7325973214285714
+        ],
+        "difference_ci95": [
+          -0.03925089285714286,
+          0.052250892857142864
+        ],
+        "paired_units": 100
+      },
+      "recall10": {
+        "qwen": 0.757,
+        "d1": 0.757,
+        "difference_d1_minus_qwen": 0.0,
+        "qwen_ci95": [
+          0.674,
+          0.8360249999999997
+        ],
+        "d1_ci95": [
+          0.674,
+          0.8360249999999997
+        ],
+        "difference_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_units": 100
+      },
+      "bm25_baseline": {
+        "ndcg10": 0.6116031547449603,
+        "mrr10": 0.573734126984127,
+        "recall10": 0.757
+      },
+      "candidate_recall_mean": 0.757,
+      "queries_with_no_relevant_in_pool": 21,
+      "queries_with_any_relevant_in_pool": 79,
+      "unjudged_fraction_of_pool": 0.911,
+      "conditional_pool_ndcg10": {
+        "qwen3-8b": 0.8589381832585625,
+        "d1-3b": 0.8670063675885286
+      },
+      "per_pass_ndcg10": {
+        "qwen3-8b": [
+          0.6591456629410777,
+          0.6591456629410777,
+          0.6591456629410777
+        ],
+        "d1-3b": [
+          0.6654310404163007,
+          0.6654310404163007,
+          0.6654310404163007
+        ]
+      }
+    },
+    "latency": {
+      "qwen3-8b": {
+        "median_ms": 198.90121975913644,
+        "p95_ms": 222.49958072789013,
+        "requests": 3000,
+        "invalid_requests": 3,
+        "invalid_rate": 0.001,
+        "errors": {
+          "JSONDecodeError": 3
+        },
+        "mean_input_tokens": 513.176,
+        "mean_output_tokens": 11.197666666666667,
+        "mean_input_preparation_ms": 0.05905150497953097,
+        "median_harness_cpu_seconds": 0.0027039999999987074,
+        "median_container_cpu_usage_usec_delta": 210698.0
+      },
+      "d1-3b": {
+        "median_ms": 68.90821270644665,
+        "p95_ms": 87.65354976058006,
+        "requests": 3000,
+        "invalid_requests": 0,
+        "invalid_rate": 0.0,
+        "errors": {},
+        "mean_input_tokens": 463.716,
+        "mean_output_tokens": 0.0,
+        "mean_input_preparation_ms": 0.058752804373701416,
+        "median_harness_cpu_seconds": 0.0022759999999997227,
+        "median_container_cpu_usage_usec_delta": 69510.0
+      },
+      "speedup_qwen_over_d1": 2.886466096667871,
+      "cluster_median_speedup": 2.8942422659159552,
+      "cluster_median_speedup_ci95": [
+        2.8646118032247205,
+        2.936495792570321
+      ],
+      "median_paired_latency_difference_ms": -129.35722060501575,
+      "latency_bootstrap_units": "query clusters"
+    }
+  },
+  "decision_variation_fraction_across_passes": {
+    "bfcl": {
+      "qwen3-8b": 0.0,
+      "d1-3b": 0.0
+    },
+    "scifact": {
+      "qwen3-8b": 0.0,
+      "d1-3b": 0.0
+    }
+  },
+  "total_measured_requests": 7200,
+  "confidence_interval_method": "paired percentile bootstrap, 10000 replicates; average repeated quality per BFCL example or SciFact query before resampling; exploratory, no equivalence test"
+}
